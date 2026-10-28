@@ -1,30 +1,37 @@
-def bwt_visual(s):
-    s = s + '$'
-    n = len(s)
-    
-    # Generazione delle rotazioni cicliche
-    perms = [s[i:] + s[:i] for i in range(n)]
-    
-    # Ordinamento lessicografico della matrice
+def bwt(s):
+    s= s + '$'
+    perms = [s[i:] + s[:i] for i in range(len(s))]
     sorted_perms = sorted(perms)
-    
-    # Estrazione del risultato BWT (colonna Last)
-    bwt_result = ''.join([p[-1] for p in sorted_perms])
-    
-    # Visualizzazione della tabella
-    print(f"Stringa di input: '{s[:-1]}' (estesa con '$': '{s}')\n")
-    print(f"{'Idx':<5} | {'Matrice Rotazioni Ordinate':<{n+4}} | {'F (First)':<10} | {'L (Last / BWT)'}")
-    print("-" * (n + 45))
-    
-    for i, perm in enumerate(sorted_perms):
-        first_col = perm[0]
-        last_col = perm[-1]
-        print(f"{i:<5} | {perm:<{n+4}} | {first_col:<10} | {last_col}")
-        
-    print("-" * (n + 45))
-    print(f"Risultato BWT: {bwt_result}\n")
-    return bwt_result
+    bwt = ''.join([p[-1] for p in sorted_perms])
+    return bwt
+
+def inverse_bwt(bwt_string):
+    counts = {}
+    for char in bwt_string:
+        counts[char] = counts.get(char,0) + 1
+    sorted_chars = sorted(counts.keys())
+
+    first_column = []
+    for char in sorted_chars:
+        count = counts[char]
+        first_column.extend([char] * count)
+    index = 0 
+    original_string = ""
+    for _ in bwt_string:
+        char = bwt_string[index]
+        original_string = char + original_string
+        index = first_column.index(char)
+        first_column[index] = None
+
+    return original_string[1:]
 
 if __name__ == '__main__':
-    stringa = input("Inserisci una stringa: ") or "banana"
-    bwt_visual(stringa)
+    s = input("Write a string:")
+    bw = bwt(s)
+    print("BWT Of ", s, "is", bw)
+
+    ibw = inverse_bwt(bw)
+    print("Inverse BWT of ", bw, "is", ibw)
+
+
+
