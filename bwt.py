@@ -15,4 +15,11 @@ def bubble_sort(lista):
             break
     return 1
 
-            
+def bwt(s):
+    s = s + "$"
+    rot = rotations(s)
+    ordinato = bubble_sort(rot)
+    last_column = "".join(r[-1] for r in ordinato)
+    return rot, ordinato, last_column
+
+
