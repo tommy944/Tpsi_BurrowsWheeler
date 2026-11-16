@@ -12,4 +12,14 @@ def bubbleSort(dati):
             break
     return lista
 
-        
+def BWT(testo):
+    testo_modificato = testo + "$"
+    lunghezza = len(testo_modificato)
+    rotazioni = []
+
+    for i in range(lunghezza):
+        rotazione = testo_modificato[i:] + testo_modificato[:i]
+        rotazioni.append(rotazione)
+    return rotazioni 
+
+           
