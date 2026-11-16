@@ -20,10 +20,17 @@ def BWT(testo):
     for i in range(lunghezza):
         rotazione = testo_modificato[i:] + testo_modificato[:i]
         rotazioni.append(rotazione)
+
+    print("rotazione completa dell'algortimo: ", rotazioni)
+
     rotazioni = bubbleSort(rotazioni)
     risultato = "".join(riga[-1] for riga in rotazioni)
+
+    print("Stringa con implementazione dell'algortimo: ", risultato)
     
     return rotazioni 
+
+
 
 
 
