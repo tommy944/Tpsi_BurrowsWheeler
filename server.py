@@ -18,7 +18,7 @@ with sck.socket(sck.AF_INET, sck.SOCK_STREAM) as sock_server:
             testo_ricevuto = payload.decode("utf-8")
             print("Stringa ricevuta: ", testo_ricevuto)
 
-            output_bwt = alghoritm_BWT.BWT(testo_ricevuto)
+            output_bwt = bwt.BWT(testo_ricevuto)
             print("Risultato BWT: " , output_bwt)
 
             client_conn.sendall(output_bwt.encode("utf-8"))
