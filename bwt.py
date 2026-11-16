@@ -20,6 +20,11 @@ def BWT(testo):
     for i in range(lunghezza):
         rotazione = testo_modificato[i:] + testo_modificato[:i]
         rotazioni.append(rotazione)
+    rotazioni = bubbleSort(rotazioni)
+    risultato = "".join(riga[-1] for riga in rotazioni)
+    
     return rotazioni 
+
+
 
            
