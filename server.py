@@ -1,5 +1,5 @@
 import socket as sck
-import alghoritm_BWT
+import bwt
 
 HOST = "127.0.0.1"
 PORTA = 5000
