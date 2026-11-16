@@ -28,7 +28,7 @@ def BWT(testo):
 
     print("Stringa con implementazione dell'algortimo: ", risultato)
     
-    return rotazioni 
+    return risultato
 
 
 
